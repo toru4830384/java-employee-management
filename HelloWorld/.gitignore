@@ -1,0 +1,23 @@
+# コンパイル済みファイル
+bin/
+
+# OSファイル
+.DS_Store
+
+# Eclipse
+.metadata/
+
+# Java
+*.class
+
+# Javaコンパイル後ファイル
+bin/
+*.class
+
+# Eclipse設定ファイル
+.settings/
+.classpath
+.project
+
+# Mac
+.DS_Store
