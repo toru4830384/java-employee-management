@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <context id="MerryApiTables" targetRuntime="MyBatis3">
+        <jdbcConnection
+            connectionURL="jdbc:mysql://localhost:3306/merry_db"
+            driverClass="com.mysql.cj.jdbc.Driver"
+            userId="root"
+            password="" />
+        <javaModelGenerator
+            targetPackage="jp.co.hjn.merryapi.infrastructure.model"
+            targetProject="merry-api/src/main/java" />
+        <sqlMapGenerator
+            targetPackage="jp.co.hjn.merryapi.infrastructure.mapper"
+            targetProject="merry-api/src/main/resources" />
+        <javaClientGenerator
+            targetPackage="jp.co.hjn.merryapi.infrastructure.mapper"
+            targetProject="merry-api/src/main/java"
+            type="XMLMAPPER" />
+        <table schema="merry_db" tableName="employee" />
+    </context>
+</generatorConfiguration>
