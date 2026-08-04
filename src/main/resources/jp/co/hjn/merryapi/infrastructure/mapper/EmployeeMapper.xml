@@ -22,6 +22,7 @@
     <result column="phone_number" jdbcType="VARCHAR" property="phoneNumber" />
     <result column="birthday" jdbcType="TIMESTAMP" property="birthday" />
     <result column="sex" jdbcType="INTEGER" property="sex" />
+    <result column="station" jdbcType="VARCHAR" property="station" />
     <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
     <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
     <result column="deleted_at" jdbcType="TIMESTAMP" property="deletedAt" />
@@ -102,7 +103,7 @@
     -->
     id, name_first, name_last, name_first_kana, name_last_kana, employee_position, system_role,
     postal_code, prefectures, municipalities, address1, address2, phone_number, birthday,
-    sex, created_at, updated_at, deleted_at
+    sex, station, created_at, updated_at, deleted_at
   </sql>
   <select id="selectByExample" parameterType="jp.co.hjn.merryapi.infrastructure.model.EmployeeExample" resultMap="BaseResultMap">
     <!--
@@ -164,14 +165,14 @@
       name_first_kana, name_last_kana, employee_position,
       system_role, postal_code, prefectures,
       municipalities, address1, address2,
-      phone_number, birthday, sex,
+      phone_number, birthday, sex, station,
       created_at, updated_at, deleted_at
       )
     values (#{id,jdbcType=INTEGER}, #{nameFirst,jdbcType=VARCHAR}, #{nameLast,jdbcType=VARCHAR},
       #{nameFirstKana,jdbcType=VARCHAR}, #{nameLastKana,jdbcType=VARCHAR}, #{employeePosition,jdbcType=INTEGER},
       #{systemRole,jdbcType=INTEGER}, #{postalCode,jdbcType=VARCHAR}, #{prefectures,jdbcType=VARCHAR},
       #{municipalities,jdbcType=VARCHAR}, #{address1,jdbcType=VARCHAR}, #{address2,jdbcType=VARCHAR},
-      #{phoneNumber,jdbcType=VARCHAR}, #{birthday,jdbcType=TIMESTAMP}, #{sex,jdbcType=INTEGER},
+      #{phoneNumber,jdbcType=VARCHAR}, #{birthday,jdbcType=TIMESTAMP}, #{sex,jdbcType=INTEGER}, #{station,jdbcType=VARCHAR},
       #{createdAt,jdbcType=TIMESTAMP}, #{updatedAt,jdbcType=TIMESTAMP}, #{deletedAt,jdbcType=TIMESTAMP}
       )
   </insert>
@@ -228,6 +229,9 @@
       <if test="sex != null">
         sex,
       </if>
+      <if test="station != null">
+        station,
+      </if>
       <if test="createdAt != null">
         created_at,
       </if>
@@ -283,6 +287,9 @@
       </if>
       <if test="sex != null">
         #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="station != null">
+        #{station,jdbcType=VARCHAR},
       </if>
       <if test="createdAt != null">
         #{createdAt,jdbcType=TIMESTAMP},
@@ -359,6 +366,9 @@
       <if test="row.sex != null">
         sex = #{row.sex,jdbcType=INTEGER},
       </if>
+      <if test="row.station != null">
+        station = #{row.station,jdbcType=VARCHAR},
+      </if>
       <if test="row.createdAt != null">
         created_at = #{row.createdAt,jdbcType=TIMESTAMP},
       </if>
@@ -395,6 +405,7 @@
       phone_number = #{row.phoneNumber,jdbcType=VARCHAR},
       birthday = #{row.birthday,jdbcType=TIMESTAMP},
       sex = #{row.sex,jdbcType=INTEGER},
+      station = #{row.station,jdbcType=VARCHAR},
       created_at = #{row.createdAt,jdbcType=TIMESTAMP},
       updated_at = #{row.updatedAt,jdbcType=TIMESTAMP},
       deleted_at = #{row.deletedAt,jdbcType=TIMESTAMP}
@@ -452,6 +463,9 @@
       <if test="sex != null">
         sex = #{sex,jdbcType=INTEGER},
       </if>
+      <if test="station != null">
+        station = #{station,jdbcType=VARCHAR},
+      </if>
       <if test="createdAt != null">
         created_at = #{createdAt,jdbcType=TIMESTAMP},
       </if>
@@ -485,6 +499,7 @@
       phone_number = #{phoneNumber,jdbcType=VARCHAR},
       birthday = #{birthday,jdbcType=TIMESTAMP},
       sex = #{sex,jdbcType=INTEGER},
+      station = #{station,jdbcType=VARCHAR},
       created_at = #{createdAt,jdbcType=TIMESTAMP},
       updated_at = #{updatedAt,jdbcType=TIMESTAMP},
       deleted_at = #{deletedAt,jdbcType=TIMESTAMP}

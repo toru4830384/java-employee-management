@@ -74,4 +74,8 @@ public class EmployeeRequest {
     @JsonProperty("sex")
     @NotBlank(groups = { CreateEmployee.class })
     private String sex;
+    /** 最寄駅 */
+    @JsonProperty("station")
+    @NotBlank(groups = { CreateEmployee.class })
+    private String station;
 }
