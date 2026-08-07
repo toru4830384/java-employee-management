@@ -68,8 +68,8 @@ public class EmployeeController {
                         @RequestBody @Validated({ EmployeeRequest.CreateEmployee.class }) EmployeeRequest request,
                         Errors errors) {
                 if (errors.hasErrors()) {
-                        errors.getAllErrors().stream().forEach(e -> System.out.println(e.getDefaultMessage()));
-                        return ResponseEntity.badRequest().body(new ResultResponse(ResultCode.NG.getCode()));
+                        List<String> errorMessages = errors.getAllErrors().stream().map(e -> e.getDefaultMessage()).toList();
+                        return ResponseEntity.badRequest().body(new ResultResponse(ResultCode.NG.getCode(), errorMessages));
                 }
                 return ResponseEntity.ok(
                                 this.employeeService.create(new EmployeeDto(request))
@@ -85,7 +85,12 @@ public class EmployeeController {
          */
         @PutMapping("/update")
         public ResponseEntity<ResultResponse> update(
-                        @RequestBody EmployeeRequest request) {
+        		       @RequestBody @Validated({ EmployeeRequest.CreateEmployee.class }) EmployeeRequest request,
+                       Errors errors) {
+                if (errors.hasErrors()) {
+                	List<String> errorMessages = errors.getAllErrors().stream().map(e -> e.getDefaultMessage()).toList();
+                        return ResponseEntity.badRequest().body(new ResultResponse(ResultCode.NG.getCode(), errorMessages));
+                }
                 return ResponseEntity.ok(
                                 this.employeeService.update(new EmployeeDto(request))
                                                 ? new ResultResponse(ResultCode.OK.getCode())
