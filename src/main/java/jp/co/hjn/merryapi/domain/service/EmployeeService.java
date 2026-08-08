@@ -33,17 +33,17 @@ public class EmployeeService {
     private final EmployeeMapper employeeMapper;
 
     /**
-     * 社員取得
+     * 役職指定社員取得
      *
-     * @param idList IDリスト
+     * @param positions 役職リスト
      * @return 社員リスト
      */
-    public List<EmployeeDto> find(List<Integer> idList) {
-        if (CollectionUtils.isEmpty(idList))
+    public List<EmployeeDto> findByPosition(List<Integer> positions) {
+        if (CollectionUtils.isEmpty(positions))
             return new ArrayList<EmployeeDto>();
 
         EmployeeExample example = new EmployeeExample();
-        example.createCriteria().andIdIn(idList);
+        example.createCriteria().andEmployeePositionIn(positions);
         List<Employee> employeeList = this.employeeMapper.selectByExample(example);
 
         return employeeList.stream().map(e -> this.modelMapper.map(e, EmployeeDto.class)).toList();

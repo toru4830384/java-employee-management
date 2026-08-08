@@ -47,10 +47,10 @@ public class EmployeeController {
          * @param request リクエスト
          * @return ResponseEntity EmployeeGetResponse
          */
-        @GetMapping("/find")
-        public ResponseEntity<List<EmployeeResponse>> find(@RequestParam List<Integer> ids) {
+        @GetMapping("/find/position")
+        public ResponseEntity<List<EmployeeResponse>> findByPosition(@RequestParam List<Integer> positions) {
                 return ResponseEntity.ok(
-                                this.employeeService.find(ids)
+                                this.employeeService.findByPosition(positions)
                                                 .stream()
                                                 .map(dto -> new EmployeeResponse(dto))
                                                 .toList());
