@@ -20,3 +20,15 @@ CREATE TABLE IF NOT EXISTS merry_db.employee (
     , deleted_at        DATETIME
     , PRIMARY KEY (id)
 );
+
+/* create day_off table */
+CREATE TABLE IF NOT EXISTS merry_db.day_off (
+      id          MEDIUMINT   NOT NULL    AUTO_INCREMENT
+    , employee_id MEDIUMINT   NOT NULL
+    , start_date  DATETIME    NOT NULL
+    , end_date    DATETIME    NOT NULL
+    , created_at  DATETIME    NOT NULL    DEFAULT CURRENT_TIMESTAMP
+    , updated_at  DATETIME    NOT NULL    DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    , deleted_at  DATETIME
+    , PRIMARY KEY (id)
+);

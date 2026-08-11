@@ -37,3 +37,27 @@ dependencies {
 tasks.named('test') {
     useJUnitPlatform()
 }
+
+configurations {
+    mybatisGenerator
+}
+
+dependencies {
+    mybatisGenerator 'org.mybatis.generator:mybatis-generator-core:1.4.2'
+    mybatisGenerator 'com.mysql:mysql-connector-j'
+}
+
+task mybatisGenerate {
+    doLast {
+        ant.taskdef(
+            name: 'mbgenerator',
+            classname: 'org.mybatis.generator.ant.GeneratorAntTask',
+            classpath: configurations.mybatisGenerator.asPath
+        )
+        ant.mbgenerator(
+            overwrite: true,
+            configfile: 'generatorConfig.xml',
+            verbose: true
+        )
+    }
+}
