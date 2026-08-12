@@ -1,5 +1,6 @@
 package jp.co.hjn.merryapi.application.controller.common.dto;
 
+import java.util.List;
 import lombok.Data;
 
 /**
@@ -10,6 +11,9 @@ import lombok.Data;
 public class ResultResponse {
     /** 社員DTOリスト */
     private Integer resultCode;
+    
+    /** エラーメッセージ */
+    private List<String> errorMessages;
 
     /**
      * コンストラクタ
@@ -18,5 +22,16 @@ public class ResultResponse {
      */
     public ResultResponse(Integer resultCode) {
         this.resultCode = resultCode;
+    }
+    
+    /**
+     * コンストラクタ
+     * 
+     * @param resultCode 結果コード
+     * @param errorMessazges エラーコード
+     */
+    public ResultResponse(Integer resultCode, List<String> errorMessages) {
+    	this.resultCode = resultCode;
+    	this.errorMessages = errorMessages;
     }
 }
