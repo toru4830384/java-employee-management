@@ -62,7 +62,7 @@ public class EmployeeController {
          * @param positions 役職IDリスト
          * @return ResponseEntity EmployeeResponse
          */
-        @GetMapping("/find/position")
+        @GetMapping("/findByPosition")
         public ResponseEntity<List<EmployeeResponse>> findByPosition(@RequestParam List<Integer> positions) {
                 return ResponseEntity.ok(
                                 this.employeeService.findByPosition(positions)
