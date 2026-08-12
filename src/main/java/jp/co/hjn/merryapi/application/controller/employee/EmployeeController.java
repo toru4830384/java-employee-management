@@ -57,6 +57,21 @@ public class EmployeeController {
         }
 
         /**
+         * 役職指定で社員取得
+         *
+         * @param positions 役職IDリスト
+         * @return ResponseEntity EmployeeResponse
+         */
+        @GetMapping("/findByPosition")
+        public ResponseEntity<List<EmployeeResponse>> findByPosition(@RequestParam List<Integer> positions) {
+                return ResponseEntity.ok(
+                                this.employeeService.findByPosition(positions)
+                                                .stream()
+                                                .map(dto -> new EmployeeResponse(dto))
+                                                .toList());
+        }
+
+        /**
          * 社員登録
          *
          * @param request       リクエスト
