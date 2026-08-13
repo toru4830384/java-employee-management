@@ -57,21 +57,6 @@ public class EmployeeController {
         }
 
         /**
-         * 役職指定で社員取得
-         *
-         * @param positions 役職IDリスト
-         * @return ResponseEntity EmployeeResponse
-         */
-        @GetMapping("/findByPosition")
-        public ResponseEntity<List<EmployeeResponse>> findByPosition(@RequestParam List<Integer> positions) {
-                return ResponseEntity.ok(
-                                this.employeeService.findByPosition(positions)
-                                                .stream()
-                                                .map(dto -> new EmployeeResponse(dto))
-                                                .toList());
-        }
-
-        /**
          * 社員登録
          *
          * @param request       リクエスト
@@ -83,8 +68,8 @@ public class EmployeeController {
                         @RequestBody @Validated({ EmployeeRequest.CreateEmployee.class }) EmployeeRequest request,
                         Errors errors) {
                 if (errors.hasErrors()) {
-                        List<String> errorMessages = errors.getAllErrors().stream().map(e -> e.getDefaultMessage()).toList();
-                        return ResponseEntity.badRequest().body(new ResultResponse(ResultCode.NG.getCode(), errorMessages));
+                        errors.getAllErrors().stream().forEach(e -> System.out.println(e.getDefaultMessage()));
+                        return ResponseEntity.badRequest().body(new ResultResponse(ResultCode.NG.getCode()));
                 }
                 return ResponseEntity.ok(
                                 this.employeeService.create(new EmployeeDto(request))
@@ -100,12 +85,7 @@ public class EmployeeController {
          */
         @PutMapping("/update")
         public ResponseEntity<ResultResponse> update(
-        		       @RequestBody @Validated({ EmployeeRequest.CreateEmployee.class }) EmployeeRequest request,
-                       Errors errors) {
-                if (errors.hasErrors()) {
-                	List<String> errorMessages = errors.getAllErrors().stream().map(e -> e.getDefaultMessage()).toList();
-                        return ResponseEntity.badRequest().body(new ResultResponse(ResultCode.NG.getCode(), errorMessages));
-                }
+                        @RequestBody EmployeeRequest request) {
                 return ResponseEntity.ok(
                                 this.employeeService.update(new EmployeeDto(request))
                                                 ? new ResultResponse(ResultCode.OK.getCode())

@@ -79,6 +79,10 @@ public class EmployeeResponse {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("sex")
     private String sex;
+    /** 最寄駅 */
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty("station")
+    private String station;
 
     public EmployeeResponse(EmployeeDto dto) {
         this.id = dto.getId();
@@ -101,5 +105,6 @@ public class EmployeeResponse {
                 : null;
         Optional<Sex> optSex = Optional.ofNullable(dto.getSex());
         this.sex = optSex.isPresent() ? optSex.get().getName() : null;
+        this.station = dto.getStation();
     }
 }

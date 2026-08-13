@@ -15,6 +15,7 @@ CREATE TABLE IF NOT EXISTS merry_db.employee (
     , phone_number      VARCHAR(16)
     , birthday          DATETIME
     , sex               INT
+    , station           VARCHAR(64)
     , created_at        DATETIME    NOT NULL    DEFAULT CURRENT_TIMESTAMP
     , updated_at        DATETIME    NOT NULL    DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
     , deleted_at        DATETIME

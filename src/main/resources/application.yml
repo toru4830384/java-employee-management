@@ -1,8 +1,8 @@
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/merry_db
-    username: devuser
-    password: password
+    username: root
+    password:
     driverClassName: com.mysql.cj.jdbc.Driver
 mybatis:
   configuration:
