@@ -9,14 +9,15 @@
             password="" />
         <javaModelGenerator
             targetPackage="jp.co.hjn.merryapi.infrastructure.model"
-            targetProject="merry-api/src/main/java" />
+            targetProject="src/main/java" />
         <sqlMapGenerator
             targetPackage="jp.co.hjn.merryapi.infrastructure.mapper"
-            targetProject="merry-api/src/main/resources" />
+            targetProject="src/main/resources" />
         <javaClientGenerator
             targetPackage="jp.co.hjn.merryapi.infrastructure.mapper"
-            targetProject="merry-api/src/main/java"
+            targetProject="src/main/java"
             type="XMLMAPPER" />
         <table schema="merry_db" tableName="employee" />
+        <table schema="merry_db" tableName="day_off" />
     </context>
 </generatorConfiguration>
